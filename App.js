@@ -34,9 +34,35 @@ export default function App() {
     }
   }
 
+
+  function Percentage(){
+
+    const splitNumbers = currentNumber.split(" ");
+    const NumberSelect = parseFloat(splitNumbers[2]);
+    const OneNumber = parseFloat(splitNumbers[0]);
+    const operator = splitNumbers[1];
+    setCurrentNumber((OneNumber + " " + operator + " " + (NumberSelect / 100)).toString());
+    return
+  }
+
+  function Invert(){
+
+  const splitNumbers = currentNumber.split(" ");
+  const Negative = splitNumbers[0];
+
+    if (Negative == "-") {
+    const Numberone = parseFloat(splitNumbers[1]);
+      setCurrentNumber((Numberone).toString());
+    }else{
+      setCurrentNumber(('-' + " " + currentNumber).toString())
+    }
+
+  }
+  
+
   function handleInput(buttonPressed){
     console.log(buttonPressed);// Mostra no Console a tecla pressionada
-    if(buttonPressed === '+' | buttonPressed === "-" | buttonPressed === "x" | buttonPressed === "/" ){
+    if(buttonPressed === '+' | buttonPressed === "-" | buttonPressed === "x" | buttonPressed === "/"){
       setCurrentNumber(currentNumber + " " + buttonPressed + " ")
       return;
     }
@@ -52,7 +78,11 @@ export default function App() {
         setLastNumber(currentNumber + " = ");
         calculator();
         return;
+      case '%':
+        Percentage();
+        return;
       case '+/-':
+        Invert();
         return;
     }
 
